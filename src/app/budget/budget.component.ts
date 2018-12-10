@@ -16,7 +16,6 @@ export class BudgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.getData());
   }
 
   getData() {

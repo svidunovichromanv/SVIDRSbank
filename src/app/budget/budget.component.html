@@ -1,5 +1,8 @@
-<div class="m-3">
-  <ul>
-    <li *ngFor="let item of getData(); let i = index">{{item.year+'/'+(item.month+1)+'/'+item.day}}</li>
+<div class="container m-3">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of getData(); let i = index">
+      {{item.year+'/'+(item.month+1)+'/'+item.day}}
+      <app-structure-of-expense [expense]="item.budget"></app-structure-of-expense>
+    </li>
   </ul>
 </div>
