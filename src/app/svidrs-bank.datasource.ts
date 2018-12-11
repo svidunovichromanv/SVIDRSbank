@@ -1,6 +1,6 @@
 ﻿import {Injectable} from '@angular/core';
 import { dataBase } from './tempDataBase';
-import {Idata} from './idata';
+import {Idata} from './interfaces/idata';
 import { Observable, from } from 'rxjs';
 
 
