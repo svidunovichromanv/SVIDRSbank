@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OddBGcolorDirective } from './directives/odd-bgcolor.directive';
 import { TempPipe } from './pipes/temp.pipe';
 import { SelectShownInformComponent } from './select-shown-inform/select-shown-inform.component';
+import { EditerExpensesOfDayComponent } from './editer-expenses-of-day/editer-expenses-of-day.component';
 
 // определяем маршруты
 const appRoutes: Routes = [
@@ -32,7 +33,7 @@ const appRoutes: Routes = [
   ],
   declarations: [
     StatisticsComponent, SvidrsBankComponent,
-    BudgetComponent, MainComponent, NavigateComponent, StructureOfExpenseComponent, OddBGcolorDirective, TempPipe, SelectShownInformComponent
+    BudgetComponent, MainComponent, NavigateComponent, StructureOfExpenseComponent, OddBGcolorDirective, TempPipe, SelectShownInformComponent, EditerExpensesOfDayComponent
   ],
   providers: [ SvidrsBankDatasource ],
   bootstrap: [ SvidrsBankComponent ]

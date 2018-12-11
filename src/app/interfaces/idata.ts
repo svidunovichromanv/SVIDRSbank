@@ -5,4 +5,5 @@ export interface Idata {
   day: number;
   budget: Iexpenses;
   report: Iexpenses;
+  id: number;
 }

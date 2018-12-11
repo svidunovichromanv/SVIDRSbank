@@ -11,6 +11,7 @@ import { SelectVal } from '../interfaces/select-val';
 export class BudgetComponent implements OnInit {
   private data: Array<Idata> = [];
   private dataShow: string;
+  private editerDayId: number;
   constructor(private datasource: SvidrsBankDatasource) {
     this.datasource.getOneMonth(2019, 0). subscribe((data) => {
       this.data.push(...data);
@@ -33,5 +34,9 @@ export class BudgetComponent implements OnInit {
         this.data = data;
       });
     }
+  }
+  changeEditerId(id: number): void {
+    this.editerDayId = id;
+    console.log(id);
   }
 }
