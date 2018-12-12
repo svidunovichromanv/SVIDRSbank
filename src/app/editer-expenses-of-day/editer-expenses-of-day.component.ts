@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Iexpenses } from '../interfaces/iexpenses';
 import {SvidrsBankDatasource} from '../svidrs-bank.datasource';
 import {NgForm} from '@angular/forms';
+import { EditerDayBudgetDatasource } from '../editerDayBudget.datasource';
 
 @Component({
   selector: 'app-editer-expenses-of-day',
@@ -11,8 +12,8 @@ import {NgForm} from '@angular/forms';
 export class EditerExpensesOfDayComponent implements OnInit {
   public budgetOnDay: Iexpenses;
   private editerDayId: number;
-  constructor(private datasource: SvidrsBankDatasource) {
-    this.datasource.getEditerIdDayBudget().subscribe((id) => {
+  constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDayBudgetDatasource) {
+    this.editerDatasource.getEditerIdDayBudget().subscribe((id) => {
       this.editerDayId = id;
     });
     this.datasource.getOneDayBudget(this.editerDayId).subscribe((budget) => {
@@ -25,8 +26,8 @@ export class EditerExpensesOfDayComponent implements OnInit {
 
   saveNewDataForDay(newDay: NgForm) {
     console.log(newDay + ' новые данные, которые хочу записать');
-    this.datasource.setEditerIdDayBudget(null);
-    this.datasource.getEditerIdDayBudget().subscribe((getID) => {
+    this.editerDatasource.setEditerIdDayBudget(null);
+    this.editerDatasource.getEditerIdDayBudget().subscribe((getID) => {
       console.log(getID + ' getEditerIdDayBudget в EditerExpensesOfDayComponent при сохранении');
     });
   }

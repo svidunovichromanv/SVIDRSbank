@@ -9,10 +9,6 @@ import { Iexpenses } from './interfaces/iexpenses';
 export class SvidrsBankDatasource {
 
   private dataBase: Array <Idata> = dataBase;
-  private editerIdDayBudget: number | null = null;
-/*
-  private editerIdDayReport: number | null = null;
-*/
 
   constructor() {
   }
@@ -25,13 +21,6 @@ export class SvidrsBankDatasource {
     return from([this.dataBase.filter((indexDay) => indexDay.month === month && indexDay.year === year)]);
   }
 
-  getEditerIdDayBudget (): Observable <number|null> {
-    return from( [this.editerIdDayBudget] );
-  }
-
-  setEditerIdDayBudget (id: number | null): void {
-    this.editerIdDayBudget = id;
-  }
 
   getOneDayBudget (id: number): Observable <Array<Iexpenses>> {
     const tempArr: Array<Idata> = this.dataBase.filter((indexDay) => indexDay.id === id);

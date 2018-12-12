@@ -16,6 +16,7 @@ import { OddBGcolorDirective } from './directives/odd-bgcolor.directive';
 import { TempPipe } from './pipes/temp.pipe';
 import { SelectShownInformComponent } from './select-shown-inform/select-shown-inform.component';
 import { EditerExpensesOfDayComponent } from './editer-expenses-of-day/editer-expenses-of-day.component';
+import { EditerDayBudgetDatasource } from './editerDayBudget.datasource';
 
 // определяем маршруты
 const appRoutes: Routes = [
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     OddBGcolorDirective, TempPipe,
     SelectShownInformComponent, EditerExpensesOfDayComponent
   ],
-  providers: [ SvidrsBankDatasource ],
+  providers: [ SvidrsBankDatasource, EditerDayBudgetDatasource ],
   bootstrap: [ SvidrsBankComponent ]
 })
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Idata } from '../interfaces/idata';
 import { SvidrsBankDatasource } from '../svidrs-bank.datasource';
+import { EditerDayBudgetDatasource } from '../editerDayBudget.datasource';
 import { SelectVal } from '../interfaces/select-val';
 
 @Component({
@@ -12,18 +13,18 @@ export class BudgetComponent implements OnInit {
   private data: Array<Idata> = [];
   private dataShow: string;
   public editerDayId: number;
-  constructor(private datasource: SvidrsBankDatasource) {
+  constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDayBudgetDatasource) {
     datasource.getOneMonth(2019, 0). subscribe((data) => {
       this.data.push(...data);
     });
-    datasource.getEditerIdDayBudget().subscribe((id) => {
+    editerDatasource.getEditerIdDayBudget().subscribe((id) => {
       this.editerDayId = id;
     });
   }
   ngOnInit() {
     setTimeout(() => {
       console.log(this.editerDayId + ' editerDayId компонента BudgetComponent через 10 скунд после OnInit');
-      this.datasource.getEditerIdDayBudget().subscribe((id) => {
+      this.editerDatasource.getEditerIdDayBudget().subscribe((id) => {
         console.log(
           this.editerDayId + ' - свойство из родителя \n' + id + ' - данные из datasource \n' + id + 'не равно' + this.editerDayId
         );
@@ -50,11 +51,11 @@ export class BudgetComponent implements OnInit {
     }
   }
   changeEditerId(id: number): void {
-    this.datasource.setEditerIdDayBudget(id);
+    this.editerDatasource.setEditerIdDayBudget(id);
     /*if (id === this.editerDayId) {
       this.datasource.setEditerIdDayBudget(null);
     }*/
-    this.datasource.getEditerIdDayBudget().subscribe((getID) => {
+    this.editerDatasource.getEditerIdDayBudget().subscribe((getID) => {
       this.editerDayId = getID;
     });
   }
