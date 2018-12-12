@@ -11,16 +11,30 @@ import { SelectVal } from '../interfaces/select-val';
 export class BudgetComponent implements OnInit {
   private data: Array<Idata> = [];
   private dataShow: string;
-  private editerDayId: number;
+  public editerDayId: number;
   constructor(private datasource: SvidrsBankDatasource) {
-    this.datasource.getOneMonth(2019, 0). subscribe((data) => {
+    datasource.getOneMonth(2019, 0). subscribe((data) => {
       this.data.push(...data);
+    });
+    datasource.getEditerIdDayBudget().subscribe((id) => {
+      this.editerDayId = id;
     });
   }
   ngOnInit() {
+    setTimeout(() => {
+      console.log(this.editerDayId + ' editerDayId компонента BudgetComponent через 10 скунд после OnInit');
+      this.datasource.getEditerIdDayBudget().subscribe((id) => {
+        console.log(
+          this.editerDayId + ' - свойство из родителя \n' + id + ' - данные из datasource \n' + id + 'не равно' + this.editerDayId
+        );
+      });
+    }, 10000);
   }
   getData(): Array<Idata> {
     return this.data;
+  }
+  getdataShow(): string {
+    return this.dataShow;
   }
   showOther(evn) {
     if (evn === 'Все') {
@@ -36,7 +50,12 @@ export class BudgetComponent implements OnInit {
     }
   }
   changeEditerId(id: number): void {
-    this.editerDayId = id;
-    console.log(id);
+    this.datasource.setEditerIdDayBudget(id);
+    /*if (id === this.editerDayId) {
+      this.datasource.setEditerIdDayBudget(null);
+    }*/
+    this.datasource.getEditerIdDayBudget().subscribe((getID) => {
+      this.editerDayId = getID;
+    });
   }
 }

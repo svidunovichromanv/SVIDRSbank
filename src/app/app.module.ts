@@ -33,7 +33,10 @@ const appRoutes: Routes = [
   ],
   declarations: [
     StatisticsComponent, SvidrsBankComponent,
-    BudgetComponent, MainComponent, NavigateComponent, StructureOfExpenseComponent, OddBGcolorDirective, TempPipe, SelectShownInformComponent, EditerExpensesOfDayComponent
+    BudgetComponent, MainComponent,
+    NavigateComponent, StructureOfExpenseComponent,
+    OddBGcolorDirective, TempPipe,
+    SelectShownInformComponent, EditerExpensesOfDayComponent
   ],
   providers: [ SvidrsBankDatasource ],
   bootstrap: [ SvidrsBankComponent ]
