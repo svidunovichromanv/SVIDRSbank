@@ -1,0 +1,10 @@
+<div class="inline">
+  <div class="exceptions">
+    <div class="food elem-exception" (mouseover)="showHint('food')" (mouseleave)="hideHint()" [ngStyle]="{'width': getWidthInPx('food')}"></div>
+    <div class="utility elem-exception" (mouseover)="showHint('utility')" (mouseleave)="hideHint()" [ngStyle]="{'width': getWidthInPx('utility')}"></div>
+    <div class="dress elem-exception" (mouseover)="showHint('dress')" (mouseleave)="hideHint()" [ngStyle]="{'width': getWidthInPx('dress')}"></div>
+    <div class="pet elem-exception" (mouseover)="showHint('pet')" (mouseleave)="hideHint()" [ngStyle]="{'width': getWidthInPx('pet')}"></div>
+    <div class="transport elem-exception" (mouseover)="showHint('transport')" (mouseleave)="hideHint()" [ngStyle]="{'width': getWidthInPx('transport')}"></div>
+  </div>
+</div>
+<div class="alert-info alert-my" [@show]="alertAnimState" *ngIf="hintInfo">{{hintInfo}}</div>

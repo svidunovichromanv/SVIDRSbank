@@ -1,0 +1,37 @@
+.inline{
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: auto;
+  float: right;
+}
+.exceptions{
+  width: 202px;
+  height: 12px;
+  display: flex;
+  border-radius: 5px;
+  border: darkgrey solid 2px;
+  overflow: hidden;
+}
+.elem-exception{
+  height: 100%;
+}
+.food{
+  background-color: chartreuse;
+}
+.utility{
+  background-color: red;
+}
+.dress{
+  background-color: coral;
+}
+.pet{
+  background-color: lightseagreen;
+}
+.transport{
+  background-color: dodgerblue;
+}
+.alert-my{
+  width: auto;
+  margin-right: 10px;
+  float: right;
+}

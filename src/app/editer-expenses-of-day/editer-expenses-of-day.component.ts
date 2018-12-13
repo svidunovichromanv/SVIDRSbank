@@ -13,23 +13,24 @@ export class EditerExpensesOfDayComponent implements OnInit {
   public budgetOnDay: Iexpenses;
   private editerDayId: number;
   constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDayBudgetDatasource) {
-    this.editerDatasource.getEditerIdDayBudget().subscribe((id) => {
-      this.editerDayId = id;
-    });
+    this.editerDatasource.getSubject()
+      .subscribe((idDay) => {
+        this.nextEditerId(idDay);
+      });
     this.datasource.getOneDayBudget(this.editerDayId).subscribe((budget) => {
       this.budgetOnDay = budget[0];
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  nextEditerId(idDay: number|null) {
+    this.editerDayId = idDay;
   }
 
   saveNewDataForDay(newDay: NgForm) {
-    console.log(newDay + ' новые данные, которые хочу записать');
-    this.editerDatasource.setEditerIdDayBudget(null);
-    this.editerDatasource.getEditerIdDayBudget().subscribe((getID) => {
-      console.log(getID + ' getEditerIdDayBudget в EditerExpensesOfDayComponent при сохранении');
-    });
+    console.log(newDay.value.food + '');
+    this.editerDatasource.getSubject().next(null);
   }
 
 }

@@ -1,0 +1,8 @@
+<form class="form-check-inline">
+  <label for='mySelect' class="col-form-label mr-2">Период:</label>
+  <select [(ngModel)]="dataShow" (ngModelChange)="showOther()" id="mySelect" name="mySelect" class="custom-select">
+    <option *ngFor="let item of getSelect()" [value]="item.value">
+      {{item.value}}
+    </option>
+  </select>
+</form>

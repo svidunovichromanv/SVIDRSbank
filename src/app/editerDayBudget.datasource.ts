@@ -1,22 +1,17 @@
 ﻿import {Injectable} from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Subject, BehaviorSubject, from } from 'rxjs';
 
 
 @Injectable()
 export class EditerDayBudgetDatasource {
 
-  private editerIdDayBudget: number | null = null;
+  private editerIdDayBudgetEvn$: BehaviorSubject<number | null>;
 
   constructor() {
+    this.editerIdDayBudgetEvn$ = new BehaviorSubject<number|null>(null);
   }
 
-  getEditerIdDayBudget (): Observable <number|null> {
-    return from( [this.editerIdDayBudget] );
+  getSubject (): BehaviorSubject<number|null> {
+    return this.editerIdDayBudgetEvn$;
   }
-
-  setEditerIdDayBudget (id: number | null): void {
-    this.editerIdDayBudget = id;
-  }
-
-
 }

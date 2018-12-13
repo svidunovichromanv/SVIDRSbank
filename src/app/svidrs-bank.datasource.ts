@@ -30,5 +30,12 @@ export class SvidrsBankDatasource {
     }
     return from( [budget] );
   }
-
+  setOneDayBudget (dayBudget: Iexpenses, id: number): void {
+    this.dataBase = this.dataBase.map((day) => {
+      if (day.id === id) {
+        day.budget = dayBudget;
+      }
+      return day;
+    });
+  }
 }

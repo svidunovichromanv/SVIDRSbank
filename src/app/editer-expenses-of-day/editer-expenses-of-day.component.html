@@ -4,7 +4,7 @@
       <input
         type="number"
         class="form-control"
-        [(ngModel)]="budgetOnDay.food"
+        [ngModel]="budgetOnDay?.food||0"
         name="food"
       >
     </label>
@@ -14,7 +14,7 @@
       <input
         type="number"
         class="form-control"
-        [(ngModel)]="budgetOnDay.utility"
+        [ngModel]="budgetOnDay?.utility||0"
         name="utility"
       >
     </label>
@@ -24,7 +24,7 @@
       <input
         type="number"
         class="form-control"
-        [(ngModel)]="budgetOnDay.dress"
+        [ngModel]="budgetOnDay?.dress||0"
         name="dress"
       >
     </label>
@@ -34,7 +34,7 @@
       <input
         type="number"
         class="form-control"
-        [(ngModel)]="budgetOnDay.pet"
+        [ngModel]="budgetOnDay?.pet||0"
         name="pet"
       >
     </label>
@@ -44,7 +44,7 @@
       <input
         type="number"
         class="form-control"
-        [(ngModel)]="budgetOnDay.transport"
+        [ngModel]="budgetOnDay?.transport||0"
         name="transport"
       >
     </label>
