@@ -1,10 +1,10 @@
-<form (ngSubmit)="saveNewDataForDay(newDay)" #newDay="ngForm">
+<form class="formOverflow" (ngSubmit)="saveNewDataForDay()" [@show]="editerAnimationState">
   <div class="form-group">
     <label class="col-form-label"> На еду:
       <input
         type="number"
         class="form-control"
-        [ngModel]="budgetOnDay?.food||0"
+        [(ngModel)]="budgetOnDay.food"
         name="food"
       >
     </label>
@@ -14,7 +14,7 @@
       <input
         type="number"
         class="form-control"
-        [ngModel]="budgetOnDay?.utility||0"
+        [(ngModel)]="budgetOnDay.utility"
         name="utility"
       >
     </label>
@@ -24,7 +24,7 @@
       <input
         type="number"
         class="form-control"
-        [ngModel]="budgetOnDay?.dress||0"
+        [(ngModel)]="budgetOnDay.dress"
         name="dress"
       >
     </label>
@@ -34,7 +34,7 @@
       <input
         type="number"
         class="form-control"
-        [ngModel]="budgetOnDay?.pet||0"
+        [(ngModel)]="budgetOnDay.pet"
         name="pet"
       >
     </label>
@@ -44,7 +44,7 @@
       <input
         type="number"
         class="form-control"
-        [ngModel]="budgetOnDay?.transport||0"
+        [(ngModel)]="budgetOnDay.transport"
         name="transport"
       >
     </label>

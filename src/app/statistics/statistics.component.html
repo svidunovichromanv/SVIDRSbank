@@ -1,3 +1,7 @@
-<p>
-  statistics works!
-</p>
+<app-select-shown-inform
+  [dataShow]="getdataShow()"
+  (show)="showOther($event)"
+></app-select-shown-inform>
+<google-chart
+  [data]="pieChartData">
+</google-chart>

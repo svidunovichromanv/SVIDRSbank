@@ -23,8 +23,7 @@ export class BudgetComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getData(): Array<Idata> {
     return this.data;

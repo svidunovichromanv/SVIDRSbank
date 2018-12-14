@@ -37,5 +37,8 @@ export class SvidrsBankDatasource {
       }
       return day;
     });
+    console.log(this.dataBase.filter((day) => {
+      return day.id === id;
+    }));
   }
 }

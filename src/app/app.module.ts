@@ -17,6 +17,7 @@ import { TempPipe } from './pipes/temp.pipe';
 import { SelectShownInformComponent } from './select-shown-inform/select-shown-inform.component';
 import { EditerExpensesOfDayComponent } from './editer-expenses-of-day/editer-expenses-of-day.component';
 import { EditerDayBudgetDatasource } from './editerDayBudget.datasource';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 // определяем маршруты
 const appRoutes: Routes = [
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [ BrowserModule, FormsModule,
     RouterModule.forRoot(appRoutes), HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, Ng2GoogleChartsModule
   ],
   declarations: [
     StatisticsComponent, SvidrsBankComponent,
