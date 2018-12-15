@@ -1,4 +1,5 @@
-<form class="formOverflow" (ngSubmit)="saveNewDataForDay()" [@show]="editerAnimationState">
+<div *ngIf="!dataState"></div>
+<form *ngIf="dataState" class="formOverflow" (ngSubmit)="saveNewDataForDay()" [@show]="editerAnimationState">
   <div class="form-group">
     <label class="col-form-label"> На еду:
       <input

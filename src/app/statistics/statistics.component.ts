@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import {Idata} from '../interfaces/idata';
-import {SvidrsBankDatasource} from '../svidrs-bank.datasource';
+import { Idata } from '../interfaces/idata';
+import { SvidrsBankDatasource } from '../svidrs-bank.datasource';
 
 @Component({
   selector: 'app-statistics',
@@ -10,32 +10,16 @@ import {SvidrsBankDatasource} from '../svidrs-bank.datasource';
 export class StatisticsComponent implements OnInit {
   private dataShow: string;
   private data: Array<Idata> = [];
-  public dataTablePieChartBudget: Array<Array<string|number>>;
+  public dataTableStructureBudget: Array<Array<string|number>>;
+  public dataTableBudget: Array<Array<string|number>>;
   public pieChartDataStructureBudget: any;
-  public pieChartDataBudget: any = {
-    chartType: 'LineChart',
-    dataTable: [
-      [new Date(2015, 0, 1), 5],  [new Date(2015, 0, 2), 7],  [new Date(2015, 0, 3), 3],
-      [new Date(2015, 0, 4), 1],  [new Date(2015, 0, 5), 3],  [new Date(2015, 0, 6), 4],
-      [new Date(2015, 0, 7), 3],  [new Date(2015, 0, 8), 4],  [new Date(2015, 0, 9), 2],
-      [new Date(2015, 0, 10), 5], [new Date(2015, 0, 11), 8], [new Date(2015, 0, 12), 6],
-      [new Date(2015, 0, 13), 3], [new Date(2015, 0, 14), 3], [new Date(2015, 0, 15), 5],
-      [new Date(2015, 0, 16), 7], [new Date(2015, 0, 17), 6], [new Date(2015, 0, 18), 6],
-      [new Date(2015, 0, 19), 3], [new Date(2015, 0, 20), 1], [new Date(2015, 0, 21), 2],
-      [new Date(2015, 0, 22), 4], [new Date(2015, 0, 23), 6], [new Date(2015, 0, 24), 5],
-      [new Date(2015, 0, 25), 9], [new Date(2015, 0, 26), 4], [new Date(2015, 0, 27), 9],
-      [new Date(2015, 0, 28), 8], [new Date(2015, 0, 29), 6], [new Date(2015, 0, 30), 4],
-      [new Date(2015, 0, 31), 6], [new Date(2015, 1, 1), 7],  [new Date(2015, 1, 2), 9]
-    ],
-    options: {
-      'title': 'Бюджет ',
-      width: 500,
-      height: 500,
-    },
-  };
+  public pieChartDataBudget: any;
   constructor(private datasource: SvidrsBankDatasource) {
-    datasource.getOneMonth(2019, 0). subscribe((data) => {
-      this.data.push(...data);
+    datasource.getAllData(). subscribe((data) => {
+      this.data = data
+        .filter((indexDay: Idata) => {
+          return indexDay.month === 0 && indexDay.year === 2019;
+        });
       this.updatedataChart();
     });
   }
@@ -43,34 +27,57 @@ export class StatisticsComponent implements OnInit {
   ngOnInit() {
   }
   updatedataChart(): void {
-    this.dataTablePieChartBudget = [];
-    this.dataTablePieChartBudget.push(['Бюджет', 'Budget all']);
+    this.dataTableBudget = [];
+    this.dataTableBudget.push(['Даты', 'Траты в руб']);
+    this.dataTableStructureBudget = [];
+    this.dataTableStructureBudget.push(['Бюджет', 'Budget all']);
     let summFood = 0;
     let summUtility = 0;
     let summDress = 0;
     let summPet = 0;
     let summTransport = 0;
     for (let i = 0; i < this.data.length; i++) {
+      let summDay = 0;
+      let strigDate = '';
+      summDay = this.data[i].budget.food
+        + this.data[i].budget.utility
+        + this.data[i].budget.dress
+        + this.data[i].budget.pet
+        + this.data[i].budget.transport;
+      strigDate = this.data[i].day + '/' + (this.data[i].month + 1) + '/' + this.data[i].year;
+      this.dataTableBudget.push([strigDate, summDay]);
       summFood += this.data[i].budget.food;
       summUtility += this.data[i].budget.utility;
       summDress += this.data[i].budget.dress;
       summPet += this.data[i].budget.pet;
       summTransport += this.data[i].budget.transport;
     }
-    this.dataTablePieChartBudget.push(['Продукты', summFood]);
-    this.dataTablePieChartBudget.push(['Налоги', summUtility]);
-    this.dataTablePieChartBudget.push(['Одежда', summDress]);
-    this.dataTablePieChartBudget.push(['Питомец', summPet]);
-    this.dataTablePieChartBudget.push(['Транспорт', summTransport]);
+    this.dataTableStructureBudget.push(['Продукты', summFood]);
+    this.dataTableStructureBudget.push(['Налоги', summUtility]);
+    this.dataTableStructureBudget.push(['Одежда', summDress]);
+    this.dataTableStructureBudget.push(['Питомец', summPet]);
+    this.dataTableStructureBudget.push(['Транспорт', summTransport]);
     this.pieChartDataStructureBudget =  {
         chartType: 'PieChart',
-        dataTable: this.dataTablePieChartBudget,
+        dataTable: this.dataTableStructureBudget,
         options: {
           'title': 'Бюджет ',
-          width: 500,
           height: 500,
+          colors: ['#0bc7b1', '#e4e2c8', '#d9bb74', '#82a752', '#054549']
         },
-      };
+    };
+    this.pieChartDataBudget = {
+      chartType: 'LineChart',
+      dataTable: this.dataTableBudget,
+      options: {
+        title: 'Бюджет',
+        height: 300,
+        curveType: 'function',
+        legend: {
+          position: 'bottom'
+        }
+      },
+    };
   }
 
   getdataShow(): string {
@@ -85,12 +92,14 @@ export class StatisticsComponent implements OnInit {
     } else {
       const year: number = +evn.slice(0, 4);
       const month: number = +evn.slice(5, 7) - 1;
-      return this.datasource.getOneMonth(year, month). subscribe((data) => {
-        this.data = data;
+      return this.datasource.getAllData(). subscribe((data) => {
+        this.data = data
+          .filter((indexDay: Idata) => {
+            return indexDay.month === month && indexDay.year === year;
+          });
         this.updatedataChart();
       });
     }
-    console.log(evn);
   }
 
 }

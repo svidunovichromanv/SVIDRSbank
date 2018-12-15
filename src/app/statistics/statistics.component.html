@@ -2,9 +2,11 @@
   [dataShow]="getdataShow()"
   (show)="showOther($event)"
 ></app-select-shown-inform>
-<google-chart
-  [data]="pieChartDataStructureBudget">
-</google-chart>
-<google-chart
-  [data]="pieChartDataBudget">
-</google-chart>
+<div class="containerForOverflow">
+  <google-chart
+    [data]="pieChartDataStructureBudget">
+  </google-chart>
+  <google-chart
+    [data]="pieChartDataBudget">
+  </google-chart>
+</div>

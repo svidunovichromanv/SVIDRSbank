@@ -16,19 +16,19 @@
   height: 100%;
 }
 .food{
-  background-color: chartreuse;
+  background-color: #0bc7b1;
 }
 .utility{
-  background-color: red;
+  background-color: #f1f0e2;
 }
 .dress{
-  background-color: coral;
+  background-color: #d9bb74;
 }
 .pet{
-  background-color: lightseagreen;
+  background-color: #82a752;
 }
 .transport{
-  background-color: dodgerblue;
+  background-color: #054549;
 }
 .alert-my{
   width: auto;

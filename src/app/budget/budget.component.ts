@@ -14,8 +14,8 @@ export class BudgetComponent implements OnInit {
   private dataShow: string;
   private editerDayBudget: number|null;
   constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDayBudgetDatasource) {
-    datasource.getOneMonth(2019, 0). subscribe((data) => {
-      this.data.push(...data);
+    datasource.getAllData().subscribe((data) => {
+      this.data = data.filter((indexDay: Idata) => indexDay.month === 11 && indexDay.year === 2018);
     });
     editerDatasource.getSubject()
       .subscribe((idDay: number|null) => {
@@ -41,8 +41,8 @@ export class BudgetComponent implements OnInit {
     } else {
       const year: number = +evn.slice(0, 4);
       const month: number = +evn.slice(5, 7) - 1;
-      return this.datasource.getOneMonth(year, month). subscribe((data) => {
-        this.data = data;
+      return this.datasource.getAllData().subscribe((data) => {
+        this.data = data.filter((indexDay: Idata) => indexDay.month === month && indexDay.year === year);
       });
     }
   }

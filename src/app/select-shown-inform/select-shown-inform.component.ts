@@ -42,7 +42,7 @@ export class SelectShownInformComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dataShow = this.select[3].value;
+    this.dataShow = this.select[2].value;
   }
   getSelect(): Array<SelectVal> {
     return this.select;

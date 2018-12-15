@@ -10,6 +10,7 @@ import {
   transition,
   trigger
 } from '@angular/animations';
+import {Idata} from '../interfaces/idata';
 
 @Component({
   selector: 'app-editer-expenses-of-day',
@@ -30,6 +31,8 @@ import {
 })
 export class EditerExpensesOfDayComponent implements OnInit, AfterViewInit {
   public budgetOnDay: Iexpenses;
+  private dataDay: Idata;
+  public dataState = false;
   private editerDayId: number;
   private editerAnimationState: string;
   constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDayBudgetDatasource) {
@@ -38,7 +41,10 @@ export class EditerExpensesOfDayComponent implements OnInit, AfterViewInit {
         this.nextEditerId(idDay);
       });
     this.datasource.getOneDayBudget(this.editerDayId).subscribe((budget) => {
-      this.budgetOnDay = budget[0];
+      console.log(budget);
+      this.dataDay = budget;
+      this.budgetOnDay = budget.budget;
+      this.dataState = true;
     });
   }
 
@@ -57,13 +63,15 @@ export class EditerExpensesOfDayComponent implements OnInit, AfterViewInit {
   }
 
   saveNewDataForDay(): void {
-    this.datasource.setOneDayBudget(this.budgetOnDay, this.editerDayId);
-    setTimeout(() => {
-      this.editerAnimationState = 'start';
-    }, 0);
-    setTimeout(() => {
-      this.editerDatasource.getSubject().next(null);
-    }, 800);
+    this.dataDay.budget = this.budgetOnDay;
+    this.datasource.setOneDayBudget(this.dataDay, this.editerDayId)
+      .subscribe(() => {
+        setTimeout(() => {
+          this.editerAnimationState = 'start';
+        }, 0);
+        setTimeout(() => {
+          this.editerDatasource.getSubject().next(null);
+        }, 800);
+      });
   }
-
 }
