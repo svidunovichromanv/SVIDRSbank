@@ -1,0 +1,21 @@
+.headContainer{
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  background-image: url(../../img/BACKGROUND.jpg);
+  background-position: center;
+}
+@font-face {
+  font-family: BerlinSans; /* Имя шрифта */
+  src: url(../../fonts/BRLNSR.TTF); /* Путь к файлу со шрифтом */
+}
+.header{
+  font-size: 10em;
+  font-family:"BerlinSans";
+  color: #575555;
+  -webkit-text-fill-color: #575555;
+  -webkit-text-stroke: 1px white;
+}
+.myBTN{
+
+}

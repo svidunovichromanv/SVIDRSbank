@@ -5,7 +5,6 @@ import { Component} from '@angular/core';
   templateUrl: './navigate.component.html',
   styleUrls: ['./navigate.component.css']
 })
-export class NavigateComponent{
-
-
+export class NavigateComponent {
+  public isCollapsed = true;
 }

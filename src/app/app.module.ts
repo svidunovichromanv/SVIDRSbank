@@ -19,6 +19,8 @@ import { EditerExpensesOfDayComponent } from './editer-expenses-of-day/editer-ex
 import { EditerDayBudgetDatasource } from './editerDayBudget.datasource';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+
 // определяем маршруты
 const appRoutes: Routes = [
     { path: '', component: MainComponent},
@@ -31,7 +33,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [ BrowserModule, FormsModule,
     RouterModule.forRoot(appRoutes), HttpClientModule,
-    BrowserAnimationsModule, Ng2GoogleChartsModule
+    BrowserAnimationsModule, Ng2GoogleChartsModule, NgbCollapseModule
   ],
   declarations: [
     StatisticsComponent, SvidrsBankComponent,
