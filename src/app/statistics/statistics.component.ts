@@ -18,7 +18,7 @@ export class StatisticsComponent implements OnInit {
     datasource.getAllData(). subscribe((data) => {
       this.data = data
         .filter((indexDay: Idata) => {
-          return indexDay.month === 0 && indexDay.year === 2019;
+          return indexDay.month === 11 && indexDay.year === 2018;
         });
       this.updatedataChart();
     });
