@@ -26,7 +26,7 @@ export class SvidrsBankDatasource {
     return <Observable<Idata>>this.http2.get('http://localhost:3000/data/' + id);
   }
 
-  setOneDayBudget (dataDay: Idata, id: number): Observable <any>{
+  setOneDayBudget (dataDay: Idata, id: number): Observable <any> {
     return this.http3.put('http://localhost:3000/data/' + id, dataDay);
   }
 }
