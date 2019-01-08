@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Idata } from '../interfaces/idata';
-import { SvidrsBankDatasource } from '../svidrs-bank.datasource';
+import { SvidrsBankDatasource } from '../service/svidrs-bank.datasource';
 
 @Component({
   selector: 'app-statistics',

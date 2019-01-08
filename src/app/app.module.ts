@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SvidrsBankComponent } from './svidrs-bank.component';
-import { SvidrsBankDatasource } from './svidrs-bank.datasource';
+import { SvidrsBankDatasource } from './service/svidrs-bank.datasource';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { BudgetComponent } from './budget/budget.component';
 import { MainComponent } from './main/main.component';
@@ -16,16 +16,18 @@ import { OddBGcolorDirective } from './directives/odd-bgcolor.directive';
 import { TempPipe } from './pipes/temp.pipe';
 import { SelectShownInformComponent } from './select-shown-inform/select-shown-inform.component';
 import { EditerExpensesOfDayComponent } from './editer-expenses-of-day/editer-expenses-of-day.component';
-import { EditerDayBudgetDatasource } from './editerDayBudget.datasource';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { SettingsComponent } from './settings/settings.component';
+import { SetExpensesComponent } from './set-expenses/set-expenses.component';
 
 // определяем маршруты
 const appRoutes: Routes = [
     { path: '', component: MainComponent},
     { path: 'budget', component: BudgetComponent},
     { path: 'statistics', component: StatisticsComponent},
+    { path: 'settings', component: SettingsComponent},
     // для всех остальных URL-ов:
     { path: '**', redirectTo: '/' }
 ];
@@ -40,9 +42,10 @@ const appRoutes: Routes = [
     BudgetComponent, MainComponent,
     NavigateComponent, StructureOfExpenseComponent,
     OddBGcolorDirective, TempPipe,
-    SelectShownInformComponent, EditerExpensesOfDayComponent
+    SelectShownInformComponent, EditerExpensesOfDayComponent,
+    SettingsComponent, SetExpensesComponent
   ],
-  providers: [ SvidrsBankDatasource, EditerDayBudgetDatasource ],
+  providers: [ SvidrsBankDatasource],
   bootstrap: [ SvidrsBankComponent ]
 })
 

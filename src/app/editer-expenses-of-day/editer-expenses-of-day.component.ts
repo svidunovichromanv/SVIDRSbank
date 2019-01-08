@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Iexpenses } from '../interfaces/iexpenses';
-import {SvidrsBankDatasource} from '../svidrs-bank.datasource';
+import {SvidrsBankDatasource} from '../service/svidrs-bank.datasource';
 import {NgForm} from '@angular/forms';
-import { EditerDayBudgetDatasource } from '../editerDayBudget.datasource';
+import { EditerDatasource } from '../service/editer-datasource.service';
 import {
   animate,
   state,
@@ -35,13 +35,12 @@ export class EditerExpensesOfDayComponent implements OnInit, AfterViewInit {
   public dataState = false;
   private editerDayId: number;
   private editerAnimationState: string;
-  constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDayBudgetDatasource) {
+  constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDatasource) {
     this.editerDatasource.getSubject()
       .subscribe((idDay) => {
         this.nextEditerId(idDay);
       });
     this.datasource.getOneDayBudget(this.editerDayId).subscribe((budget) => {
-      console.log(budget);
       this.dataDay = budget;
       this.budgetOnDay = budget.budget;
       this.dataState = true;
@@ -55,7 +54,7 @@ export class EditerExpensesOfDayComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.editerAnimationState = 'end';
-    }, 0);
+    }, 1);
   }
 
   nextEditerId(idDay: number|null) {

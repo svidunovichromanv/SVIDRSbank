@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Idata } from '../interfaces/idata';
-import { SvidrsBankDatasource } from '../svidrs-bank.datasource';
-import { EditerDayBudgetDatasource } from '../editerDayBudget.datasource';
+import { SvidrsBankDatasource } from '../service/svidrs-bank.datasource';
+import { EditerDatasource } from '../service/editer-datasource.service';
 import { SelectVal } from '../interfaces/select-val';
 
 @Component({
   selector: 'app-budget',
   templateUrl: './budget.component.html',
-  styleUrls: ['./budget.component.css']
+  styleUrls: ['./budget.component.css'],
+  providers: [EditerDatasource]
 })
 export class BudgetComponent implements OnInit {
   private data: Array<Idata> = [];
   private dataShow: string;
   private editerDayBudget: number|null;
-  constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDayBudgetDatasource) {
+  constructor(private datasource: SvidrsBankDatasource, private editerDatasource: EditerDatasource) {
     datasource.getAllData().subscribe((data) => {
       this.data = data.filter((indexDay: Idata) => indexDay.month === 11 && indexDay.year === 2018);
     });
     editerDatasource.getSubject()
       .subscribe((idDay: number|null) => {
-        this.nextEditerId(idDay);
+        this.editerDayBudget = idDay;
       });
   }
 
@@ -45,10 +46,6 @@ export class BudgetComponent implements OnInit {
         this.data = data.filter((indexDay: Idata) => indexDay.month === month && indexDay.year === year);
       });
     }
-  }
-
-  nextEditerId(id: number|null): void {
-    this.editerDayBudget = id;
   }
 
   getEditerDayBudget(): number|null {

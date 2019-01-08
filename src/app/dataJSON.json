@@ -1,4 +1,31 @@
 {
+  "set-expenses": [
+    {
+      "nameJS": "food",
+      "nameForUser": "еда",
+      "color": "#0bc7b1"
+    },
+    {
+      "nameJS": "utility",
+      "nameForUser": "налоги",
+      "color": "#f1f0e2"
+    },
+    {
+      "nameJS": "dress",
+      "nameForUser": "одежда",
+      "color": "#d9bb74"
+    },
+    {
+      "nameJS": "pet",
+      "nameForUser": "питомец",
+      "color": "#82a752"
+    },
+    {
+      "nameJS": "transport",
+      "nameForUser": "транспорт",
+      "color": "#054549"
+    }
+  ],
   "data": [
     {
       "year": 2018,

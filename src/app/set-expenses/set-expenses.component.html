@@ -1,0 +1,13 @@
+<input class="form-control"
+       type="text"
+       [value]="setting.nameForUser"
+>
+<input class="form-control"
+       type="text"
+       [value]="setting.nameJS"
+>
+<input class="form-control color-picker"
+       type="color"
+       (change)="changeColor($event.target.value)"
+       [value]="setting.color"
+>

@@ -16,7 +16,6 @@
       <app-structure-of-expense
         *ngIf="item.id != getEditerDayBudget(); else editExpenses"
         [expense]="item.budget">
-
       </app-structure-of-expense>
       <ng-template #editExpenses>
         <app-editer-expenses-of-day></app-editer-expenses-of-day>

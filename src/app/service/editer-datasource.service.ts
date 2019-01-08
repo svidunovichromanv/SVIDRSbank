@@ -1,9 +1,9 @@
 ﻿import {Injectable} from '@angular/core';
-import { Subject, BehaviorSubject, from } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable()
-export class EditerDayBudgetDatasource {
+export class EditerDatasource {
 
   private editerIdDayBudgetEvn$: BehaviorSubject<number | null>;
 
