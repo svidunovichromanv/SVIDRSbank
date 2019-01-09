@@ -1,13 +1,24 @@
-<input class="form-control"
-       type="text"
-       [value]="setting.nameForUser"
->
-<input class="form-control"
-       type="text"
-       [value]="setting.nameJS"
->
-<input class="form-control color-picker"
-       type="color"
-       (change)="changeColor($event.target.value)"
-       [value]="setting.color"
->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>Название</label>
+  <input class="form-control"
+         type="text"
+         formControlName="nameForUser"
+  >
+  <p *ngIf="form.get('nameForUser').errors?.required">Название не должено быть пустым!</p>
+  <label>Ключ</label>
+  <input class="form-control"
+         type="text"
+         formControlName="nameJS"
+  >
+  <p *ngIf="form.get('nameJS').errors?.required">Ключ не должен быть пустым!</p>
+  <label>Цвет</label>
+  <input class="form-control color-picker"
+         type="color"
+         formControlName="color"
+  >
+  <button
+    class="btn btn-success"
+    type="submit"
+    [disabled]="form.pristine || form.invalid"
+  >Сохранить</button>
+</form>
