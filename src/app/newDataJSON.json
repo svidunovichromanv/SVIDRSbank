@@ -1,0 +1,62 @@
+{
+  "data": [
+    {
+      "year": 2018,
+      "month": 10,
+      "day": 6,
+      "budget": {
+        "income":[
+          {
+            "name": "зарплата",
+            "quantity": 3000,
+            "color": "#0bc7b1"
+          },
+          {
+            "name": "проценты по вкладам",
+            "quantity": 30,
+            "color": "#0777b1"
+          }
+        ],
+        "costs":[
+          {
+            "name": "еда",
+            "quantity": 17.22,
+            "color": "#0bc7b1"
+          },
+          {
+            "name": "комуналка",
+            "quantity": 30,
+            "color": "#f1f0e2"
+          }
+        ]
+      },
+      "report": {
+        "income":[
+          {
+            "name": "зарплата",
+            "quantity": 3000,
+            "color": "#0bc7b1"
+          },
+          {
+            "name": "проценты по вкладам",
+            "quantity": 30,
+            "color": "#0777b1"
+          }
+        ],
+        "costs":[
+          {
+            "name": "еда",
+            "quantity": 17.22,
+            "color": "#0bc7b1"
+          },
+          {
+            "name": "комуналка",
+            "quantity": 30,
+            "color": "#f1f0e2"
+          }
+        ]
+      },
+      "id": 0
+    }
+  ]
+}
