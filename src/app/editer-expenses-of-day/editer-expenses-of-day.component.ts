@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Iexpenses } from '../interfaces/iexpenses';
+import { Istucture } from '../interfaces/iexpenses';
 import {SvidrsBankDatasource} from '../service/svidrs-bank.datasource';
 import {NgForm} from '@angular/forms';
 import { EditerDatasource } from '../service/editer-datasource.service';
@@ -30,7 +30,7 @@ import {Idata} from '../interfaces/idata';
   ]
 })
 export class EditerExpensesOfDayComponent implements OnInit, AfterViewInit {
-  public budgetOnDay: Iexpenses;
+  public budgetOnDay: Istucture;
   private dataDay: Idata;
   public dataState = false;
   private editerDayId: number;

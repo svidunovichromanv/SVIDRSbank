@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Iexpenses } from '../interfaces/iexpenses';
+import { Iitem } from '../interfaces/iexpenses';
 import {
   trigger,
   state,
@@ -26,7 +26,7 @@ import {
   ]
 })
 export class StructureOfExpenseComponent implements OnInit {
-  @Input() expense: Iexpenses;
+  @Input() expense: Array<Iitem>;
   private hintInfo: string;
   private alertAnimState: string;
   private delTimer;

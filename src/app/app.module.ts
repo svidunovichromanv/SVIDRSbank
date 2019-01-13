@@ -21,6 +21,7 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { SettingsComponent } from './settings/settings.component';
 import { SetExpensesComponent } from './set-expenses/set-expenses.component';
+import { InitComponent } from './init/init.component'
 
 // определяем маршруты
 const appRoutes: Routes = [
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     NavigateComponent, StructureOfExpenseComponent,
     OddBGcolorDirective, TempPipe,
     SelectShownInformComponent, EditerExpensesOfDayComponent,
-    SettingsComponent, SetExpensesComponent
+    SettingsComponent, SetExpensesComponent,
+    InitComponent
   ],
   providers: [ SvidrsBankDatasource],
   bootstrap: [ SvidrsBankComponent ]

@@ -1,9 +1,9 @@
-import { Iexpenses } from './iexpenses';
+import { Istucture } from './iexpenses';
 export interface Idata {
   year: number;
   month: number;
   day: number;
-  budget: Iexpenses;
-  report: Iexpenses;
+  budget: Istucture;
+  report: Istucture;
   id: number;
 }

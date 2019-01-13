@@ -2,7 +2,7 @@
 import { dataBase } from '../tempDataBase';
 import {Idata} from '../interfaces/idata';
 import { Observable, from } from 'rxjs';
-import { Iexpenses } from '../interfaces/iexpenses';
+import { Istucture } from '../interfaces/iexpenses';
 import { HttpClient } from '@angular/common/http';
 import {Settings} from '../interfaces/settings';
 
